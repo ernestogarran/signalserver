@@ -1,5 +1,4 @@
 //  OpenShift sample Node application
-const http = require('http');
 const sockets  = require('./sockets.js');
 const config   = require('getconfig');
 const env      = process.env;
@@ -18,7 +17,17 @@ var server = null;
 process.env.NODE_ENV = 'production';
 //process.env.NODE_ENV = 'development';
 
-server = require('http').Server(server_handler);
+server = require('http').createServer();
+
+server.on('request', function(req, res){
+	response.setHeader('Access-Control-Allow-Origin', '*');
+	response.setHeader('Access-Control-Request-Method', '*');
+	response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
+	response.setHeader('Access-Control-Allow-Headers', '*');
+  	res.writeHead(200, {'Content-Type': 'text/plain'});
+  	res.end();
+});
+
 server.listen(port, address, function () {
     console.log(`Application worker ${process.pid} started...`);
 });
