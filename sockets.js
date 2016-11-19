@@ -8,9 +8,9 @@ var patientList = [];
 //
 
 module.exports = function (server, config) {
-    var io = socketIO.listen(server);
+    var io = socketIO.listen(server,  { origins: '*:*' });
 
-    io.origins('https://signalserver-medchat.44fs.preview.openshiftapps.com/socket.io/');
+    //io.origins('https://signalserver-medchat.44fs.preview.openshiftapps.com/socket.io/');
 
     io.sockets.on('connection', function (client) {
         console.log ("coneccion de cliente " + client.id)
