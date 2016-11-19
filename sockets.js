@@ -10,6 +10,8 @@ var patientList = [];
 module.exports = function (server, config) {
     var io = socketIO.listen(server);
 
+    io.origins('*:*');
+
     io.sockets.on('connection', function (client) {
         console.log ("coneccion de cliente " + client.id)
 
