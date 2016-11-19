@@ -3,9 +3,9 @@
   "server": {
     "port": 8080,
     "/* secure */": "/* whether this connects via https */",
-    "secure": true,
-    "key": "config/sslcerts/key.pem",
-    "cert": "config/sslcerts/cert.pem",
+    "secure": null,
+    "key": null,
+    "cert": null,
     "password": null
   },
   "rooms": {
