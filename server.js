@@ -5,7 +5,7 @@ const config   = require('getconfig');
 const env      = process.env;
 
 var port    = process.env.PORT    || config.server.port;
-var address = process.env.NODE_IP ||'127.0.0.1';
+var address = process.env.NODE_IP ||'localhost';
 
 var server_handler = function (req, res) {
     res.writeHead(404);
