@@ -11,6 +11,8 @@ module.exports = function (server, config) {
 
     var io = socketIO.listen(server);
 
+    io.origins('*:*');
+
     io.sockets.on('connection', function (client) {
         console.log ("coneccion de cliente " + client.id)
 
@@ -19,6 +21,11 @@ module.exports = function (server, config) {
             video: true,
             audio: false
         };
+
+        // stop node. sinaled form npm stop
+        client.on('npmStop', () => {
+          process.exit(0);
+        });
  
         // pass a message to another id
         client.on('message', function (details) {

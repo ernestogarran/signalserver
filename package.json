@@ -13,7 +13,8 @@
     "npm": "*"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "stop": "node server.stop.js"
   },
   "repository": {
     "type": "git",

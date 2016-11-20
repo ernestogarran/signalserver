@@ -10,17 +10,20 @@ var server = null;
 
 /*global console*/
 process.env.NODE_ENV = 'production';
-//process.env.NODE_ENV = 'development';
+//process.env.NODE_ENV = 'development'; 
 
-server = require('http').createServer();
-
-server.on('request', function(req, res){
-	response.setHeader('Access-Control-Allow-Origin', '*');
-	response.setHeader('Access-Control-Request-Method', '*');
-	response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
-	response.setHeader('Access-Control-Allow-Headers', '*');
-  	res.writeHead(200, {'Content-Type': 'text/plain'});
-  	res.end();
+server = require('http').createServer(function (req, res) {
+	if (req.method === 'OPTIONS') {
+		console.log('!OPTIONS');
+		res.setHeader('Access-Control-Allow-Origin', '*');
+		res.setHeader('Access-Control-Request-Method', '*');
+		res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
+		res.setHeader('Access-Control-Allow-Headers', '*');
+		res.writeHead(200, {'Content-Type': 'text/plain'});
+		res.writeHead(200, headers);
+		res.end();
+		return
+	}
 });
 
 server.listen(port, address, function () {
